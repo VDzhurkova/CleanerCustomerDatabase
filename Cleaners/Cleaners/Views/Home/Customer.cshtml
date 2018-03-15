@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Cleaners.Models.Customer>
+
+@{
+    ViewBag.Title = "Customer";
+}
+
+<div class="container">
+    <div class="jumbotron mainHeading">
+        <h2>Customer</h2>
+</div>
+    <div class="jumbotron linkBridge">
+        <div class="row">
+            <div class="col-md-9 col-sm-9">
+                <p>
+                    <a href='@Url.Action("AddCustomer", "Home")'><i class="fa fa-plus-square fa-2x "></i></a>
+                    @*@Html.ActionLink("NEW", "Add", null, new { @class= "btn btn-default fa fa-plus-square" })*@
+                </p>
+            </div>
+
+            <div class="col-md-3 col-sm-3">
+                @using (Html.BeginForm())
+            {
+                    @*<p>
+                            Cleaner: @Html.DropDownList("CleanerName", "All")
+                            Search: @Html.TextBox("searchString")
+                            <input type="submit" value="Filter" />
+                        </p>*@
+                    <form class="navbar-form" role="search">
+                        <div class="input-group add-on">
+                            @Html.TextBox("searchString", null, new { @class = "form-control" })
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="fa fa-search-plus"></i></button>
+                            </div>
+                        </div>
+                    </form>
+
+                }
+            </div>
+
+        </div>
+    </div>
+    <div class="jumbotron">
+        <br />
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        @Html.DisplayNameFor(c => c.Name)
+                    </th>
+                    <th scope="col">
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>
+                            @Html.ActionLink((string)@item.Name, "DetailsCustomer", new { id = item.Id })
+                        </td>
+                        <td>
+                            <a href='@Url.Action("EditCustomer", "Home", new { id = item.Id, @class="btn btn-default"})'><i class="fa fa-edit fa-2x"></i></a> |
+                            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id })*@
+                            <a href='@Url.Action("DeleteCustomer", "Home", new { id = item.Id, @class="btn btn-default"})'><i class="fa fa-trash-o fa-2x"></i></a>
+                            @*@Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                        </td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,93 @@
+﻿@model  Tuple<Cleaners.Models.Cleaner, List<Cleaners.Models.Customer>>
+
+@{
+    ViewBag.Title = "Customer";
+}
+
+<div class="container">
+    <div class="jumbotron mainHeading">
+        <h2>Calculate</h2>
+    </div>
+    <div class="jumbotron linkBridge">
+        <div class="row">
+            <div class="col-sm-4">
+                <a href='@Url.Action("CleanerSchedule", "Home", new { id = Model.Item1.Id, @class="btn btn-primary"})'><i class="fa fa-undo fa-2x"></i></a>
+            </div>
+            <div class="col-sm-6">
+                <p style="font-size:15px">@Html.DisplayFor(c => c.Item1.Name)</p>
+            </div>
+            <div class="col-sm-2">
+                <p style="font-size:15px">Rate:&nbsp;@Html.DisplayFor(c => c.Item1.Rate)</p>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron">
+        <br />
+        
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        Client
+                    </th>
+                    <th scope="col">
+                        <i class="fa fa-calculator"></i>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Item2)
+                {
+                  
+                    
+                    <tr>
+                        <td>@Html.DisplayFor(c => item.Name)</td>
+                        <td>
+                        @using (Html.BeginForm())
+                        {
+                            <div class="form-inline">
+                                <div class="form-group">
+                                    @Html.LabelFor(c => item.Hours, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(c => item.Hours, new { htmlAttributes = new { @class = "form-control", Id = "hour" + item.Id } })
+                                        @Html.ValidationMessageFor(c => item.Hours, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.Label("Rate", htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.Editor("Rate", new { htmlAttributes = new { @class = "form-control", Id = "rate"+ item.Id, @onchange ="calculate_sub(" + item.Id +")" } })
+                                        
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.Label("Total", htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                                    <div class="col-md-10">
+                                        @Html.Editor("Total", new { htmlAttributes = new { @class = "form-control", Id="total"+item.Id } })
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        </td>
+                    </tr>
+
+
+                }
+            </tbody>
+        </table>
+        <div class="form-group">
+            @Html.Label("Grand Total", htmlAttributes: new { @class = "cntrol-label col-md-2", Name = "grandTotal" })
+            <div class="col-md-8">
+                @Html.Editor("Grand Total", new { htmlAttributes = new { @class = "form-control", Name = "grandTotal" } })
+            </div>
+            <div class="col-md-2">
+                <input type="button" class="btn btn-primary" value="Calculate" onclick="calculate_total()" />
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+   
+
+</script>

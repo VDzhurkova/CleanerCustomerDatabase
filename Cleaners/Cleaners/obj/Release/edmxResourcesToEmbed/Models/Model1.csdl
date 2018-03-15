@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CleanersCustomersModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cleaner">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Postcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Rate" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+    <NavigationProperty Name="Customers" Relationship="Self.FK_Customers_Cleaners" FromRole="Cleaners" ToRole="Customers" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Postcode" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Service" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CleaningDay" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="StartingHour" Type="Time" Precision="7" />
+    <Property Name="Hours" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="Rate" Type="Decimal" Precision="18" Scale="2" />
+    <Property Name="CleanerId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cleaner" Relationship="Self.FK_Customers_Cleaners" FromRole="Customers" ToRole="Cleaners" />
+  </EntityType>
+  <Association Name="FK_Customers_Cleaners">
+    <End Role="Cleaners" Type="Self.Cleaner" Multiplicity="1" />
+    <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cleaners">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Customers">
+        <PropertyRef Name="CleanerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CleanersCustomersEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cleaners" EntityType="Self.Cleaner" />
+    <EntitySet Name="Customers" EntityType="Self.Customer" />
+    <AssociationSet Name="FK_Customers_Cleaners" Association="Self.FK_Customers_Cleaners">
+      <End Role="Cleaners" EntitySet="Cleaners" />
+      <End Role="Customers" EntitySet="Customers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

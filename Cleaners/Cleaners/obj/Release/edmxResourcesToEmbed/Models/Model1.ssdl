@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CleanersCustomersModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cleaners">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" Nullable="false" />
+    <Property Name="Address" Type="varchar(max)" />
+    <Property Name="City" Type="varchar(max)" />
+    <Property Name="Postcode" Type="varchar(max)" />
+    <Property Name="Phone" Type="varchar(max)" Nullable="false" />
+    <Property Name="Rate" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" Nullable="false" />
+    <Property Name="Address" Type="varchar(max)" />
+    <Property Name="City" Type="varchar(max)" />
+    <Property Name="Postcode" Type="varchar(max)" />
+    <Property Name="Phone" Type="varchar(max)" />
+    <Property Name="Service" Type="varchar(max)" />
+    <Property Name="CleaningDay" Type="varchar(max)" />
+    <Property Name="StartingHour" Type="time" Precision="7" />
+    <Property Name="Hours" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="Rate" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="CleanerId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Customers_Cleaners">
+    <End Role="Cleaners" Type="Self.Cleaners" Multiplicity="1" />
+    <End Role="Customers" Type="Self.Customers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cleaners">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Customers">
+        <PropertyRef Name="CleanerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="CleanersCustomersModelStoreContainer">
+    <EntitySet Name="Cleaners" EntityType="Self.Cleaners" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Customers_Cleaners" Association="Self.FK_Customers_Cleaners">
+      <End Role="Cleaners" EntitySet="Cleaners" />
+      <End Role="Customers" EntitySet="Customers" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

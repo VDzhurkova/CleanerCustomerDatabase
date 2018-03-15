@@ -1,0 +1,94 @@
+﻿@model Cleaners.Models.Customer
+
+@{
+    ViewBag.Title = "DetailsCustomer";
+}
+
+<div class="container">
+    <div class="jumbotron mainHeading">
+        <h2>Details</h2>
+    </div>
+    <div class="row bg-danger">
+        <div class="col-md-8">
+            <h4> @Html.DisplayFor(c => c.Name)</h4>
+        </div>
+        <div class="col-md-4 btn-group-horizontal">
+            <input type="button" class="btn btn-primary" value="Edit" onclick="location.href='@Url.Action("EditCustomer", "Home", new { id = Model.Id } )'" />
+
+            @Html.ActionLink("Back", "Customer", null, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+    <div class="jumbotron">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(c => c.Address)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.Address)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(c => c.City)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.City)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(c => c.Postcode)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.Postcode)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(c => c.Phone)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.Phone)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(c => c.Service)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.Service)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(c => c.CleaningDay)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.CleaningDay)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(c => c.StartingHour)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.StartingHour)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(c => c.Hours)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.Hours)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(c => c.Rate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.Rate)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(c => c.CleanerName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.CleanerName)
+            </dd>
+        </dl>
+    </div>
+
+   
+
+</div>
+
+
+
+
+
+

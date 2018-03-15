@@ -1,0 +1,66 @@
+﻿@model Cleaners.Models.Cleaner
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container">
+    <div class="jumbotron mainHeading">
+        <h2>Details</h2>
+    </div>
+    <div class="row bg-danger">
+        <div class="col-md-8">
+            <h4> @Html.DisplayFor(c => c.Name)</h4>
+        </div>
+        <div class="col-md-4 btn-group-horizontal">
+            <input type="button" class="btn btn-primary" value="Edit" onclick="location.href='@Url.Action("Edit", "Home", new { id = Model.Id } )'" />
+
+            @Html.ActionLink("Back", "Cleaner", null, new { @class = "btn btn-primary" })
+        </div>
+    </div>
+    <div class="jumbotron">
+        <dl class="dl-horizontal">
+            @*<dt>
+                @Html.DisplayNameFor(c => c.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.Name)
+            </dd>*@
+            <dt>
+                @Html.DisplayNameFor(c => c.Address)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.Address)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(c => c.City)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.City)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(c => c.Postcode)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.Postcode)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(c => c.Phone)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.Phone)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(c => c.Rate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.Rate)
+            </dd>
+        </dl>
+    </div>
+
+    <br />
+    
+
+</div>
+

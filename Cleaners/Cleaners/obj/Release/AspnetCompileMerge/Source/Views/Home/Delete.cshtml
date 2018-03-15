@@ -1,0 +1,68 @@
+﻿@model Cleaners.Models.Cleaner
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div class="container">
+    <div class="jumbotron mainHeading">
+        <h2>Delete Record</h2>
+    </div>
+
+    <div class="bg-danger">
+        
+            <h4>Delete Record for @Html.DisplayFor(c => c.Name)</h4>
+        @using (Html.BeginForm())
+        {
+            <input class="btn btn-danger" type="submit" value="Confirm" />
+        }
+        
+            
+        
+    </div>
+    <div class="jumbotron">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(c => c.Name)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.Name)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(c => c.Address)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.Address)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(c => c.City)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.City)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(c => c.Postcode)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.Postcode)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(c => c.Phone)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.Phone)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(c => c.Rate)
+            </dt>
+            <dd>
+                @Html.DisplayFor(c => c.Rate)
+            </dd>
+        </dl>
+       
+    </div>
+    
+      @Html.ActionLink("Back", "Cleaner", null, new { @class = "btn btn-primary" })
+
+      
+    
+</div>

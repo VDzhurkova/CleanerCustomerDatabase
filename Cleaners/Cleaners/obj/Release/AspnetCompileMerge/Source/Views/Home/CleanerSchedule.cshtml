@@ -1,0 +1,146 @@
+﻿@model Tuple<Cleaners.Models.Cleaner,IQueryable<Cleaners.Models.Customer>>
+
+@{
+    ViewBag.Title = "CleanerSchedule";
+}
+
+<div class="container">
+    <div class="jumbotron mainHeading">
+        <h2>Schedule</h2>
+    </div>
+    <div class="jumbotron linkBridge">
+
+        <div class="row">
+            <div class="col-sm-4">
+                @Html.ActionLink("Back", "Cleaner", null, new { @class = "btn btn-primary" })
+            </div>
+            <div class="col-sm-8">
+                <p style="font-size:15px">@Html.DisplayFor(c => c.Item1.Name)</p>
+            </div>
+        </div>
+    </div>
+    <div class="jumbotron">
+        @using (Html.BeginForm("Calculate", "Home", FormMethod.Post))
+        {
+            
+            <table class="table">
+                <thead class="bg-danger">
+                    <tr>
+                        <th>
+                            Day:
+                        </th>
+                        <th>
+                            <i class="fa fa-check"></i>
+                        </th>
+                        <th>
+                            Name:
+                        </th>
+                        <th>
+                           Starting Hour:
+                        </th>
+                        <th>
+                            Time:
+                        </th>
+                    </tr>
+                </thead>
+
+                @foreach (var item in Model.Item2)
+                {
+                    switch (item.CleaningDay)
+                    {
+                        case "Monday":
+                            <tr>
+                                <th scope="row">Monday</th>
+                                <td>
+                                    @Html.CheckBoxFor(c => item.Checked, new { Name = "customerChecked", Value = @item.Id })
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(c => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(c => item.StartingHour)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(c => item.Hours)
+                                </td>
+                            </tr>     break;
+                        case "Tuesday":
+                            <tr>
+                                <th scope="row">Tuesday</th>
+                                <td>
+                                    @Html.CheckBoxFor(c => item.Checked, new { Name = "customerChecked", Value = @item.Id })
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(c => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(c => item.StartingHour)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(c => item.Hours)
+                                </td>
+                            </tr>  break;
+                        case "Wednesday":
+                            <tr>
+                                <th scope="row">Wednesday</th>
+                                <td>
+                                    @Html.CheckBoxFor(c => item.Checked, new { Name = "customerChecked", Value = @item.Id })
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(c => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(c => item.StartingHour)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(c => item.Hours)
+                                </td>
+                            </tr> break;
+                        case "Thursday":
+                            <tr>
+                                <th scope="row">Thursday</th>
+                                <td>
+                                    @Html.CheckBoxFor(c => item.Checked, new { Name = "customerChecked", Value = @item.Id })
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(c => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(c => item.StartingHour)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(c => item.Hours)
+                                </td>
+                            </tr> break;
+                        case "Friday":
+                            <tr>
+                                <th scope="row">Friday</th>
+                                <td>
+                                    @Html.CheckBoxFor(c => item.Checked, new { Name = "customerChecked", Value = @item.Id })
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(c => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(c => item.StartingHour)
+
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(c => item.Hours)
+                                </td>
+                            </tr> break;
+
+                    }
+                }
+
+            </table>
+            <input class="btn btn-primary" type="submit" name="submit" value="Calculate" /><br>
+        }
+    </div>
+
+</div>

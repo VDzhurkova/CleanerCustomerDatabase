@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Cleaners.Models.Customer>
+
+
+    <table class="table table-responsive table-borderless" style="background:#eee">
+        <tbody>
+            <tr>
+                @foreach (var item in Model)
+                {
+
+
+                     <td style="width:20%">
+                         <p>@Html.CheckBoxFor(c => item.Checked, new { Name = "customerChecked", Value = @item.Id })</p>
+                         <p class="text-success"> @Html.DisplayFor(c=>item.StartingHour) - @item.getEndHour((TimeSpan)@item.StartingHour, (decimal)@item.Hours)</p>
+                         <p> @item.Name</p>
+                         @if (TimeSpan.FromHours(Convert.ToDouble(@item.Hours)).Minutes > 0)
+                         {
+                            <p> @TimeSpan.FromHours(Convert.ToDouble(@item.Hours)).Hours h @TimeSpan.FromHours(Convert.ToDouble(@item.Hours)).Minutes min </p>
+                         }
+                         else
+                         {
+                            <p> @TimeSpan.FromHours(Convert.ToDouble(@item.Hours)).Hours h</p>
+                         }
+                         @if (item.Service == "forthnightly") {
+                             <p class="text-info">@item.Service</p>
+                         }
+
+</td>
+                }
+            </tr>
+        </tbody>
+    </table>
+

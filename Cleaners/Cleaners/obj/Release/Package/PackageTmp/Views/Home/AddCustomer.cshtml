@@ -1,0 +1,119 @@
+﻿
+@model Cleaners.Models.Customer
+
+@{
+    ViewBag.Title = "AddCustomer";
+}
+
+<div class="container">
+    <div class="jumbotron mainHeading">
+        <h2>New Customer</h2>
+    </div>
+    <div class="jumbotron linkBridge">
+        @Html.ActionLink("Back", "Customer", null, new { @class = "btn btn-primary" })
+    </div>
+    <div class="jumbotron">
+        @using (Html.BeginForm())
+        {
+
+            <div class="form-horizontal row">
+                <fieldset class="col-md-6">
+                    <legend>Resonal Details</legend>
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group form-inline">
+                        @Html.LabelFor(c => c.Name, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(c => c.Name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(c => c.Name, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group form-inline">
+                        @Html.LabelFor(c => c.Address, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(c => c.Address, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(c => c.Address, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group form-inline">
+                        @Html.LabelFor(c => c.City, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(c => c.City, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(c => c.City, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group form-inline">
+                        @Html.LabelFor(c => c.Postcode, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(c => c.Postcode, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(c => c.Postcode, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group form-inline">
+                        @Html.LabelFor(c => c.Phone, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(c => c.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(c => c.Phone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="col-md-6">
+                    <legend>Service Details</legend>
+                    <div class="form-group form-inline">
+                        @Html.LabelFor(c => c.Service, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(c => c.Service, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(c => c.Service, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group form-inline">
+                        @Html.LabelFor(c => c.CleaningDay, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(c => c.CleaningDay, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(c => c.CleaningDay, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group form-inline">
+                        @Html.LabelFor(c => c.StartingHour, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(c => c.StartingHour, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(c => c.StartingHour, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group form-inline">
+                        @Html.LabelFor(c => c.Hours, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(c => c.Hours, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(c => c.Hours, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group form-inline">
+                        @Html.LabelFor(c => c.Rate, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(c => c.Rate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(c => c.Rate, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group form-inline">
+                        @Html.Label("Cleaner:", htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                        <div class="col-md-10">
+
+                            @Html.EditorFor(c => c.CleanerName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(c => c.CleanerName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10 ">
+                            <input class="btn btn-danger pull-left" type="submit" value="Add Record" />
+                        </div>
+                    </div>
+                </fieldset>
+
+            </div>
+        }
+
+        <br />
+       
+    </div>
+</div>
+
+

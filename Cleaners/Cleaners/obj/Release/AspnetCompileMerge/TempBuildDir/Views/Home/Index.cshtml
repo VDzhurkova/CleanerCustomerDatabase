@@ -1,0 +1,31 @@
+﻿
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<div class="container">
+    <div class="jumbotron mainHeading">
+        <h2>Welcome to my DemoDatabase</h2>
+    </div>
+    <div class="jumbotron text-center">
+        <br />
+        <div class="row">
+            <div class="col-md-6">
+                <article class="item">
+                    <a href='@Url.Action("Cleaner", "Home")'>
+                        <img src="~/Content/images/cleaners.png" />
+                    </a>
+                    <header>View Cleaners</header>
+                </article>
+            </div>
+            <div class="col-md-6">
+                <article class="item">
+                    <a href='@Url.Action("Customer", "Home")'>
+                        <img src="~/Content/images/customers.png" />
+                    </a>
+                    <header>View Customers</header>
+                </article>
+            </div>
+        </div>
+    </div>
+</div>

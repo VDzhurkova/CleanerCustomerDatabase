@@ -1,0 +1,71 @@
+﻿@model Cleaners.Models.Cleaner
+
+@{
+    ViewBag.Title = "Add";
+}
+<div class="container">
+    <div class="jumbotron mainHeading">
+        <h2>Add Cleaner</h2>
+    </div>
+    <div class="jumbotron linkBridge">
+        @Html.ActionLink("Back", "Cleaner", null, new { @class = "btn btn-primary" })
+    </div>
+    <div class="jumbotron">
+        @using (Html.BeginForm())
+        {
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Name, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(c => c.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(c => c.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Address, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(c => c.Address, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(c => c.Address, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.City, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(c => c.City, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(c => c.City, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Postcode, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(c => c.Postcode, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(c => c.Postcode, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Phone, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                    <div class="col-md-10 col-xs-10">
+                        @Html.EditorFor(c => c.Phone, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(c => c.Phone, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(c => c.Rate, htmlAttributes: new { @class = "cntrol-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(c => c.Rate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(c => c.Rate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input class="btn btn-primary btn-large" type="submit" value="Add Cleaner" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <br />
+        
+    </div>
+</div>
